@@ -72,10 +72,10 @@ fsck -n /dev/sdb2
 
 12. Создайте новый раздел, размером в 12 Мбайт. Настройте файловую систему, созданную в пункте 3 таким образом, чтобы ее журнал был расположен на разделе, созданном в этом пункте.
 
-mke2fs -t ext4 /dev/sdb3
-mke2fs -O journal_dev -b 4096 /dev/sdb3
-mke2fs -O ^has_journal /dev/sdb2
-mke2fs -o journal_data -j -J device=/dev/sdb3 /dev/sdb2
+mke2fs -t ext4 /dev/sdb3 - сделал ext4 на 
+mke2fs -O journal_dev -b 4096 /dev/sdb3 - создал журнал на диске sdb3
+mke2fs -O ^has_journal /dev/sdb2 - ФС на dbs2 не имеет журнала
+mke2fs -o journal_data -j -J device=/dev/sdb3 /dev/sdb2 - создание журнала
 dumpe2fs /dev/sdb3 - чтобы проверить (поле journal_div)
 
 
